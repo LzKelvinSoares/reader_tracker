@@ -29,7 +29,8 @@ class BookShelf extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               Book book = _books[index];
-              return BookTile(book: book);
+              bool hasItem = book.imageLinks.containsKey('thumbnail');
+              return BookTile(book: book, hasItem: hasItem);
             },
           )
       )

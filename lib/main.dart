@@ -17,7 +17,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Reader Tracker',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orangeAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal.shade400).copyWith(
+          primary: Colors.teal.shade900,
+          secondary: Colors.teal.shade200,
+        ),
         useMaterial3: true,
       ),
       home: const MyHomePage(),
