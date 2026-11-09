@@ -5,9 +5,10 @@ import 'package:reader_tracker/models/book.dart';
 
 class Network {
   static const String _baseUrl = 'https://www.googleapis.com/books/v1/volumes';
+  static const String _GOOGLE_BOOKS_API_KEY = 'AIzaSyDYfOvyWhE74jZ7obVEp7UAXZgof6YuvB0';
 
   Future<List<Book>> searchBooks(String query) async {
-    var url = Uri.parse('$_baseUrl?q=$query');
+    var url = Uri.parse('$_baseUrl?q=$query&key=$_GOOGLE_BOOKS_API_KEY');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
