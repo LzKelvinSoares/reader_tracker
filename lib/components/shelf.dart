@@ -16,19 +16,9 @@ class Shelf extends StatelessWidget {
       height: 10,
       child: Container(
         decoration: BoxDecoration(
-          // gradient: LinearGradient(
-          //   begin: Alignment.topCenter,
-          //   end: Alignment.bottomCenter,
-          //   colors: [
-          //     Colors.brown.shade400,
-          //     Colors.brown.shade700,
-          //     Colors.brown.shade900,
-          //   ],
-          // ),
           image: const DecorationImage(
             image: AssetImage('assets/images/Wood_Texture.jpeg'),
             fit: BoxFit.cover,
-            // ou repeat: ImageRepeat.repeatX, se a textura for pequena
           ),
           boxShadow: [
             BoxShadow(

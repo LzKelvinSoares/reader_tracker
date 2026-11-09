@@ -3,16 +3,14 @@ import 'package:reader_tracker/components/shelf.dart';
 import 'package:reader_tracker/models/book.dart';
 
 class BookTile extends StatelessWidget {
-  const BookTile({super.key, required this.book, required this.hasItem});
+  const BookTile({super.key, required this.book});
 
   final Book book;
-  final bool hasItem;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        if (hasItem)
           Positioned.fill(
             bottom: 10.1,
             left: 1,

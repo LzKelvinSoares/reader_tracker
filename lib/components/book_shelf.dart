@@ -24,13 +24,10 @@ class BookShelf extends StatelessWidget {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 4,
               childAspectRatio: 0.6,
-              mainAxisSpacing: 0,
-              crossAxisSpacing: 0,
             ),
             itemBuilder: (context, index) {
               Book book = _books[index];
-              bool hasItem = book.imageLinks.containsKey('thumbnail');
-              return BookTile(book: book, hasItem: hasItem);
+              return BookTile(book: book);
             },
           )
       )
