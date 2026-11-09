@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reader_tracker/pages/book_details.dart';
 import 'package:reader_tracker/pages/favorites_screen.dart';
 import 'package:reader_tracker/pages/home_screen.dart';
 import 'package:reader_tracker/pages/saved_screen.dart';
@@ -23,6 +24,13 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
+      initialRoute: '/',
+      routes: {
+        '/home': (context) => const MyHomePage(),
+        '/details': (context) => const BookDetailsScreen(),
+        '/saved': (context) => const SavedScreen(),
+        '/favorites': (context) => const FavoritesScreen(),
+      },
       home: const MyHomePage(),
     );
   }
@@ -43,12 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
     const SavedScreen(),
     const FavoritesScreen(),
   ];
-
-  @override
-  void initState() {
-    super.initState();
-    // _searchBooks('Android');
-  }
   
   @override
   Widget build(BuildContext context) {
