@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:reader_tracker/components/book_tile.dart';
 import 'package:reader_tracker/models/book.dart';
+import 'package:reader_tracker/utils/book_details_arguments.dart';
 
 class BookShelf extends StatelessWidget {
   const BookShelf({
@@ -27,7 +28,13 @@ class BookShelf extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               Book book = _books[index];
-              return BookTile(book: book);
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/details', 
+                    arguments: BookDetailsArguments(itemBook: book));
+                },
+                child: BookTile(book: book)
+              );
             },
           )
       )

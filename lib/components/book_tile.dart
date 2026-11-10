@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reader_tracker/components/shelf.dart';
 import 'package:reader_tracker/models/book.dart';
-import 'package:reader_tracker/utils/book_details_arguments.dart';
 
 class BookTile extends StatelessWidget {
   const BookTile({super.key, required this.book});
@@ -10,11 +9,7 @@ class BookTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, '/details', arguments: BookDetailsArguments(itemBook: book));
-      },
-      child: Stack(
+    return Stack(
         children: [
             Positioned.fill(
               bottom: 10.1,
@@ -41,7 +36,6 @@ class BookTile extends StatelessWidget {
             ),
           Shelf(),
         ],
-      ),
     );
   }
 }
