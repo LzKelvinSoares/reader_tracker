@@ -31,7 +31,7 @@ class BookShelf extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, '/details', 
-                    arguments: BookDetailsArguments(itemBook: book));
+                    arguments: BookDetailsArguments(itemBook: book, isFromSavedScreen: false));
                 },
                 child: BookTile(book: book)
               );

@@ -26,6 +26,12 @@ class DatabaseHelper {
     );
   }
 
+  List<Book> _mapBookReturn(List<Map<String, Object?>> books) {
+    return books.isNotEmpty
+        ? books.map((bookData) => Book.fromJsonDatabase(bookData)).toList()
+        : [];
+  }
+
   Future _onCreate(Database db, int version) async {
     await db.execute('''
       CREATE TABLE $_tableName (
@@ -54,9 +60,13 @@ class DatabaseHelper {
   Future<List<Book>> readAllBooks() async {
     Database db = await instance.database;
     var books = await db.query(_tableName);
-    return books.isNotEmpty
-        ? books.map((bookData) => Book.fromJsonDatabase(bookData)).toList()
-        : [];
+    return _mapBookReturn(books);
+  }
+
+  Future<List<Book>> getFavorites() async {
+    Database db = await instance.database;
+    var books = await db.query(_tableName, where: 'favorite = ?', whereArgs: [1]);
+    return _mapBookReturn(books);
   }
 
   Future<int> toggleFavoriteStatus(String id, bool isFavorite) async {
