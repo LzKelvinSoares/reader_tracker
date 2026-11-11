@@ -81,12 +81,13 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                               ElevatedButton.icon(
                                 onPressed: () async {
                                   try {
-                                    // await DatabaseHelper.instance.readAllBooks()
-                                    // .then((books) => {
-                                    //   for (var book in books) {
-                                    //     print(book)
-                                    //   }
-                                    // });
+                                     int savedInt = await DatabaseHelper.instance
+                                        .toggleFavoriteStatus(book.id, book.isFavorite);
+                                    SnackBar snackBar = SnackBar(
+                                      content: Text("Book toggled as favorite: $savedInt"),
+                                    );
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
                                   } catch (e) {
                                     print("Error: $e");
                                   }

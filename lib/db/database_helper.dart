@@ -19,7 +19,11 @@ class DatabaseHelper {
 
   _initDatabase() async {
     String path = join(await getDatabasesPath(), _databaseName);
-    return await openDatabase(path, version: _databaseVersion, onCreate: _onCreate);
+    return await openDatabase(
+      path,
+      version: _databaseVersion,
+      onCreate: _onCreate,
+    );
   }
 
   Future _onCreate(Database db, int version) async {
@@ -50,8 +54,27 @@ class DatabaseHelper {
   Future<List<Book>> readAllBooks() async {
     Database db = await instance.database;
     var books = await db.query(_tableName);
-    return books.isNotEmpty ? 
-      books.map((bookData) => Book.fromJsonDatabase(bookData)).toList() : 
-      [];
+    return books.isNotEmpty
+        ? books.map((bookData) => Book.fromJsonDatabase(bookData)).toList()
+        : [];
+  }
+
+  Future<int> toggleFavoriteStatus(String id, bool isFavorite) async {
+    Database db = await instance.database;
+    return await db.update(
+      _tableName,
+      {'favorite': isFavorite ? 1 : 0},
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+
+  Future<int> deleteBook(String id) async {
+    Database db = await instance.database;
+    return await db.delete(
+      _tableName,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 }
